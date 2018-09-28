@@ -1,0 +1,17 @@
+com\example\tester\TesterApplication.class
+com\example\tester\controller\CourseController.class
+com\example\tester\repository\CourseRepository.class
+com\example\tester\service\CollegeService.class
+com\example\tester\service\StudentService.class
+com\example\tester\controller\StudentController.class
+com\example\tester\model\Course.class
+com\example\tester\model\StudentRequest.class
+com\example\tester\model\CollegeRequest.class
+com\example\tester\controller\CollegeController.class
+com\example\tester\exception\ResourceNotFoundException.class
+com\example\tester\model\Student.class
+com\example\tester\model\CourseRequest.class
+com\example\tester\service\CourseService.class
+com\example\tester\repository\StudentRepository.class
+com\example\tester\model\College.class
+com\example\tester\repository\CollegeRepository.class
