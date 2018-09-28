@@ -1,5 +1,9 @@
 package com.example.tester.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,17 +17,38 @@ public class Course {
     private String courseCode;
     private String courseName;
 
-    @ManyToOne
-    @JoinColumn(name="fk_student")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="student_id", nullable = false)
+    @JsonIgnore
     private Student student;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="college_id", nullable = false)
+    @JsonIgnore
+    private College college;
 
     public Course() {
     }
 
-    public Course(String courseCode, String courseName) {
+    public Course(String courseCode, String courseName, Student student) {
         this.courseCode = courseCode;
         this.courseName = courseName;
+        this.student = student;
+    }
+
+    public Course(String courseCode, String courseName, Student student, College college) {
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        this.student = student;
+        this.college = college;
+    }
+
+    public College getCollege() {
+        return college;
+    }
+
+    public void setCollege(College college) {
+        this.college = college;
     }
 
     public Long getCourseId() {
@@ -49,4 +74,14 @@ public class Course {
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+
 }

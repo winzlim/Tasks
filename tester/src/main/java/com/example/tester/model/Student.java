@@ -1,12 +1,8 @@
 package com.example.tester.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "student")
@@ -19,9 +15,29 @@ public class Student {
     private String studentName;
 
     @OneToMany(mappedBy = "student")
-    private List<Course> courses = new ArrayList<Course>();
+    private Set<Course> courses;
+
+    private String collegeName;
 
     public Student() {
+    }
+
+    public Student(Long studentId){
+        this.studentId = studentId;
+     }
+
+    public Student(Long studentId, String studentName, Set<Course> courses) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.courses = courses;
+    }
+
+    public String getCollegeName() {
+        return collegeName;
+    }
+
+    public void setCollegeName(String collegeName) {
+        this.collegeName = collegeName;
     }
 
     public Long getStudentId() {
@@ -38,6 +54,15 @@ public class Student {
 
     public void setStudentName(String studentName) {
         this.studentName = studentName;
+    }
+
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }
 
